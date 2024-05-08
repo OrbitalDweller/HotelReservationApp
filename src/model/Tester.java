@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Tester {
     public static void main(String[] args) {
         Room room = new Room("123", 100.0, RoomType.DOUBLE);
@@ -17,5 +20,14 @@ public class Tester {
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
         }
+
+        Calendar calendar = Calendar.getInstance();
+        Date date = new java.util.Date();
+        calendar.setTime(date);
+        Date checkIn = calendar.getTime();
+        calendar.add(Calendar.DAY_OF_YEAR, 7);
+        Date checkOut = calendar.getTime();
+        Reservation reservation = new Reservation(customer1, room, checkIn, checkOut);
+        System.out.println(reservation);
     }
 }
