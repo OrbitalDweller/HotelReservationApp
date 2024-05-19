@@ -1,7 +1,6 @@
 package ui;
 
 import api.HotelResource;
-import model.Customer;
 import model.IRoom;
 import model.Reservation;
 
@@ -44,7 +43,9 @@ public class MainMenu {
                 createAccount();
                 break;
             case 4:
-                // open Admin Menu
+                AdminMenu adminMenu = new AdminMenu();
+                System.out.println();
+                adminMenu.displayMenu();
                 break;
             case 5:
                 System.out.println("Exiting...");

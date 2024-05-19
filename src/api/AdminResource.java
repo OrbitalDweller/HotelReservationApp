@@ -13,7 +13,7 @@ public class AdminResource {
     private CustomerService customerService = CustomerService.getReference();
     private ReservationService reservationService = ReservationService.getReference();
 
-    public AdminResource getInstace() {
+    public static AdminResource getReference() {
         return reference;
     }
 
