@@ -24,11 +24,7 @@ public class CustomerService {
     }
 
     public Customer getCustomer(String customerEmail) {
-        if (!customers.containsKey(customerEmail)) {
-            return customers.get(customerEmail);
-        } else {
-            return null;
-        }
+        return customers.getOrDefault(customerEmail, null);
     }
 
     public Collection<Customer> getAllCustomers() {
