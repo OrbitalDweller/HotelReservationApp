@@ -11,8 +11,8 @@ import java.util.Date;
 
 public class HotelResource {
     private static HotelResource reference = new HotelResource();
-    private CustomerService customerService = CustomerService.getInstance();
-    private ReservationService reservationService = ReservationService.getInstance();
+    private CustomerService customerService = CustomerService.getReference();
+    private ReservationService reservationService = ReservationService.getReference();
 
     public static HotelResource getReference() {
         return reference;
@@ -42,9 +42,5 @@ public class HotelResource {
 
     public Collection<IRoom> findARoom(Date checkIn, Date checkOut) {
         return reservationService.findRooms(checkIn, checkOut);
-    }
-
-    public void addRoom(IRoom room) {
-        reservationService.addRoom(room);
     }
 }

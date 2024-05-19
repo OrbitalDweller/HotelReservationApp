@@ -14,7 +14,7 @@ public class CustomerService {
         customers = new HashMap<String, Customer>();
     }
 
-    public static CustomerService getInstance() {
+    public static CustomerService getReference() {
         return reference;
     }
 

@@ -8,7 +8,7 @@ import java.util.Date;
 public class Tester {
     public static void main(String[] args) {
         // Create an instance of CustomerService
-        CustomerService customerService = CustomerService.getInstance();
+        CustomerService customerService = CustomerService.getReference();
 
         // Test adding a customer
         customerService.addCustomer("John", "Doe", "john@example.com");
@@ -38,7 +38,7 @@ public class Tester {
         }
 
         // Get the singleton instance of ReservationService
-        ReservationService reservationService = ReservationService.getInstance();
+        ReservationService reservationService = ReservationService.getReference();
 
         // Create some rooms
         IRoom room101 = new Room("101", 100.0, RoomType.SINGLE);

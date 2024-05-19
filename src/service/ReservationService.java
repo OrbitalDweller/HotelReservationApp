@@ -17,7 +17,7 @@ public class ReservationService {
         rooms = new HashSet<IRoom>();
     }
 
-    public static ReservationService getInstance() {
+    public static ReservationService getReference() {
         return reference;
     }
 
@@ -82,5 +82,13 @@ public class ReservationService {
         for (Reservation reservation : reservations) {
             System.out.println(reservation);
         }
+    }
+
+    public Collection<IRoom> getAllRooms() {
+        return rooms;
+    }
+
+    public Collection<Reservation> getAllReservations() {
+        return reservations;
     }
 }
