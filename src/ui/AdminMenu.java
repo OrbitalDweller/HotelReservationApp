@@ -3,10 +3,7 @@ package ui;
 import api.AdminResource;
 import model.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class AdminMenu {
     private AdminResource adminResource;
@@ -77,20 +74,33 @@ public class AdminMenu {
     }
 
     private void addARoom() {
-        System.out.print("Enter the room number: ");
-        String roomNumber = scanner.next();
+        try {
+            System.out.print("Enter the room number: ");
+            String roomNumber = scanner.next();
 
-        System.out.print("Enter the price: ");
-        double price = scanner.nextDouble();
+            System.out.print("Enter the price: ");
+            double price = scanner.nextDouble();
 
-        System.out.print("Enter the room type (SINGLE, DOUBLE): ");
-        String roomTypeInput = scanner.next();
-        RoomType roomType = RoomType.valueOf(roomTypeInput.toUpperCase());
+            System.out.print("Enter the room type (SINGLE, DOUBLE): ");
+            String roomTypeInput = scanner.next();
+            RoomType roomType = RoomType.valueOf(roomTypeInput.toUpperCase());
 
-        IRoom room = new Room(roomNumber, price, roomType);
-        List<IRoom> rooms = new ArrayList<IRoom>();
-        rooms.add(room);
-        adminResource.addRoom(rooms);
+            IRoom room = new Room(roomNumber, price, roomType);
+            List<IRoom> rooms = new ArrayList<IRoom>();
+            rooms.add(room);
+            adminResource.addRoom(rooms);
+            System.out.println("Room added successfully!");
+
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println("Invalid room type. Please enter either SINGLE or DOUBLE.");
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Invalid input for price. Please enter a numeric value.");
+        }
+        catch (Exception e) {
+            System.out.println("An unexpected error occurred: " + e.getMessage());
+        }
     }
 
 }

@@ -97,23 +97,22 @@ public class MainMenu {
         }
 
         System.out.println("Available rooms:");
-        int index = 1;
         for (IRoom room : availableRooms) {
-            System.out.println(index + ". Room Number: " + room.getRoomNumber() + ", Price: " + room.getRoomPrice() + ", Type: " + room.getRoomType());
-            index++;
+            System.out.println("Room Number: " + room.getRoomNumber() + ", Price: " + room.getRoomPrice() + ", Type: " + room.getRoomType());
         }
 
         System.out.print("Enter the number of the room you want to select: ");
-        int roomChoice = getUserChoice();
+        String roomNumber = scanner.next();
 
-        if (roomChoice > 0 && roomChoice <= availableRooms.size()) {
-            Iterator<IRoom> iterator = availableRooms.iterator();
-            for (int i = 1; i < roomChoice; i++) {
-                iterator.next();
+        for (IRoom room : availableRooms) {
+            if (roomNumber.equals(room.getRoomNumber())) {
+                selectedRoom = room;
             }
-            selectedRoom = iterator.next();
+        }
+        if (selectedRoom != null) {
             System.out.println("You have selected room number: " + selectedRoom.getRoomNumber());
-        } else {
+        }
+        else {
             System.out.println("Invalid choice. Please try again.");
         }
 
@@ -154,7 +153,7 @@ public class MainMenu {
             System.out.println("Account successfully created.");
         } catch (Exception ex) {
             customerEmail = null;
-            System.out.println("Error: " + ex.getMessage());
+            System.out.println(ex.getMessage());
         }
     }
 
