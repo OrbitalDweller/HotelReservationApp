@@ -93,7 +93,7 @@ public class AdminMenu {
 
         }
         catch (IllegalArgumentException e) {
-            System.out.println("Invalid room type. Please enter either SINGLE or DOUBLE.");
+            System.out.println(e.getMessage());
         }
         catch (InputMismatchException e) {
             System.out.println("Invalid input for price. Please enter a numeric value.");

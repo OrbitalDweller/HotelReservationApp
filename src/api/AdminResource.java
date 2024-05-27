@@ -23,6 +23,9 @@ public class AdminResource {
 
     public void addRoom(List<IRoom> rooms) {
         for (IRoom room : rooms) {
+            if (reservationService.getARoom(room.getRoomNumber()) != null) {
+                throw new IllegalArgumentException("Room number already exists.");
+            }
             reservationService.addRoom(room);
         }
     }

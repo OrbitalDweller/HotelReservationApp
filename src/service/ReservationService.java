@@ -10,7 +10,7 @@ import java.util.*;
 public class ReservationService {
     private static ReservationService reference = new ReservationService();
     private Collection<Reservation> reservations;
-    private Collection<IRoom> rooms;
+    private Set<IRoom> rooms;
 
     private ReservationService() {
         reservations = new ArrayList<Reservation>();
