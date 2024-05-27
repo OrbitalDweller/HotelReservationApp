@@ -11,19 +11,19 @@ public class Room implements IRoom {
         this.roomType = roomType;
     }
 
-    public String getRoomNumber() {
+    public final String getRoomNumber() {
         return roomNumber;
     }
 
-    public Double getRoomPrice() {
+    public final Double getRoomPrice() {
         return price;
     }
 
-    public RoomType getRoomType() {
+    public final RoomType getRoomType() {
         return roomType;
     }
 
-    public boolean isFree() {
+    public final boolean isFree() {
         return false;
     }
 

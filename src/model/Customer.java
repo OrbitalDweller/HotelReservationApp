@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class Customer {
+public final class Customer {
     private String firstName;
     private String lastName;
     private String email;
@@ -21,15 +21,15 @@ public class Customer {
         }
     }
 
-    public String getFirstName() {
+    public final String getFirstName() {
         return firstName;
     }
 
-    public String getLastName() {
+    public final String getLastName() {
         return lastName;
     }
 
-    public String getEmail() {
+    public final String getEmail() {
         return email;
     }
 
