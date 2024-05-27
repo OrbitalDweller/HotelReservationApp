@@ -7,6 +7,6 @@ public class FreeRoom extends Room {
 
     @Override
     public String toString() {
-        return "Room number " + roomNumber + " is free and is " + roomType + " type";
+        return "Room number " + this.getRoomNumber() + " is free and is " + this.getRoomType() + " type";
     }
 }
