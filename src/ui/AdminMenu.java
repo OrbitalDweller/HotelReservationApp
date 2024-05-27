@@ -51,8 +51,22 @@ public class AdminMenu {
     }
 
     private int getUserChoice() {
-        System.out.print("Enter your choice: ");
-        return scanner.nextInt();
+        int userChoice = 0;
+        boolean valid = false;
+
+        while (!valid) {
+            try {
+                System.out.print("Enter your choice: ");
+                userChoice = scanner.nextInt();
+                valid = true;
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Invalid choice.");
+                scanner.next();
+            }
+        }
+
+        return userChoice;
     }
 
     private void seeAllCustomers() {

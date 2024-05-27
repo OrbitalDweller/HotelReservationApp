@@ -60,8 +60,22 @@ public class MainMenu {
     }
 
     private int getUserChoice() {
-        System.out.print("Enter your choice: ");
-        return scanner.nextInt();
+        int userChoice = 0;
+        boolean valid = false;
+
+        while (!valid) {
+            try {
+                System.out.print("Enter your choice: ");
+                userChoice = scanner.nextInt();
+                valid = true;
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Invalid choice.");
+                scanner.next();
+            }
+        }
+
+        return userChoice;
     }
 
     private Date getValidDate(String prompt) {
@@ -90,6 +104,18 @@ public class MainMenu {
         IRoom selectedRoom = null;
 
         Collection<IRoom> availableRooms = hotelResource.findARoom(checkInDate, checkOutDate);
+
+        if (availableRooms == null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(checkInDate);
+            calendar.add(Calendar.DAY_OF_MONTH, 7);
+            Date newCheckInDate = calendar.getTime();
+            calendar.setTime(checkOutDate);
+            calendar.add(Calendar.DAY_OF_MONTH, 7);
+            Date newCheckOutDate = calendar.getTime();
+
+            availableRooms = hotelResource.findARoom(newCheckInDate, newCheckOutDate);
+        }
 
         if (availableRooms == null || availableRooms.isEmpty()) {
             System.out.println("No available rooms for the selected dates.");
