@@ -105,7 +105,7 @@ public class MainMenu {
 
         Collection<IRoom> availableRooms = hotelResource.findARoom(checkInDate, checkOutDate);
 
-        if (availableRooms == null) {
+        if (availableRooms.isEmpty()) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(checkInDate);
             calendar.add(Calendar.DAY_OF_MONTH, 7);
@@ -115,9 +115,14 @@ public class MainMenu {
             Date newCheckOutDate = calendar.getTime();
 
             availableRooms = hotelResource.findARoom(newCheckInDate, newCheckOutDate);
+
+            if (!availableRooms.isEmpty()) {
+                System.out.println("No available rooms for the selected dates.");
+                System.out.println("There are available rooms for " + newCheckInDate + " to " + newCheckOutDate + ".");
+            }
         }
 
-        if (availableRooms == null || availableRooms.isEmpty()) {
+        if (availableRooms.isEmpty()) {
             System.out.println("No available rooms for the selected dates.");
             return selectedRoom;
         }
